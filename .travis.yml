@@ -3,9 +3,9 @@ sudo: false
 node_js:
   - "9.4"
 before_install:
-  - npm install --save alex               # http://alexjs.com/
-  - npm install --save mdast mdast-lint   # https://github.com/wooorm/mdast#readme
-  
+  - npm install --save alex                 # http://alexjs.com/
+  - npm install --save mdast mdast-lint     # https://github.com/wooorm/mdast#readme
+  - npm install --save markdown-spellcheck  # https://github.com/lukeapage/node-markdown-spellcheck
 install:
   - npm install
 script:
