@@ -8,7 +8,7 @@ ignorePattern := !**/node_modules/**/*.md		# File pattern to ignore
 offensive-wording:
 	@echo
 	@echo "==> Checking for inconsiderate/insensitive wording..."
-	@node_modules/.bin/alex $(testArgs) || true
+	@node_modules/.bin/alex $(testArgs) --diff || true
 
 #---------- Auto spellcheck ----------#
 .PHONY: spellcheck-auto
@@ -46,4 +46,4 @@ test-pre-commit: offensive-wording spellcheck-interactive lint-markdown
 .PHONY: test
 test: offensive-wording spellcheck-auto lint-markdown
 	@echo
-	@echo "--- All fatal tests passed.  See output above for warnings. ---"
+	@echo "--- All fatal tests passed.  See output above for any warnings. ---"
