@@ -1,12 +1,11 @@
 {
   "name": "mdci",
   "version": "1.0.0",
-  "description": "continuous integration for markdown files",
+  "description": "Continuous integration for Markdown files",
   "main": "Makefile",
   "dependencies": {
     "alex": "^5.1.0",
     "markdown-spellcheck": "^1.3.1",
-    "remark": "^9.0.0",
     "remark-cli": "^5.0.0",
     "remark-lint": "^6.0.1"
   },
