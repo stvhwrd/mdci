@@ -1,26 +1,26 @@
-SHELL         := /usr/bin/env bash				# Shell
+SHELL         := /usr/bin/env bash				# Use bash shell
 testArgs      :=								# Project-wide arguments
-testPattern   := '**/*.md'						# File pattern to operate on
-ignorePattern := '!**/node_modules/**/*.md'		# File pattern to ignore
+testPattern   := **/*.md						# File pattern to operate on
+ignorePattern := !**/node_modules/**/*.md		# File pattern to ignore
 
-#---------- Millennial protector ----------#
-.PHONY: test-inconsiderate
-test-inconsiderate:
+#---------- Sensitivity check ----------#
+.PHONY: offensive-wording
+offensive-wording:
 	@echo
-	@echo "--> Checking for inconsiderate writing..."
+	@echo "==> Checking for inconsiderate/insensitive wording..."
 	@node_modules/.bin/alex $(testArgs) || true
 
 #---------- Auto spellcheck ----------#
-.PHONY: test-spelling
-test-spelling:
-	@$(MAKE) test-spelling-interactive \
+.PHONY: spellcheck-auto
+spellcheck-auto:
+	@$(MAKE) spellcheck-interactive \
 		testArgs=--report
 
 #---------- Interactive spellcheck ----------#
-.PHONY: test-spelling-interactive
-test-spelling-interactive:
+.PHONY: spellcheck-interactive
+spellcheck-interactive:
 	@echo
-	@echo "--> Checking for spelling errors..."
+	@echo "==> Checking for spelling errors..."
 	@node_modules/.bin/mdspell \
 		$(testArgs) \
 		--en-gb \
@@ -30,14 +30,20 @@ test-spelling-interactive:
 		$(ignorePattern)
 
 #---------- Linter ----------#
-.PHONY: test-markdown-lint
-test-markdown-lint:
+.PHONY: lint-markdown
+lint-markdown:
 	@echo
-	@echo "--> Checking for messy formatting..."
+	@echo "==> Checking for messy formatting..."
 	@node_modules/.bin/remark --frail $(testArgs) .
 
-#---------- Runner ----------#
-.PHONY: test
-test: test-inconsiderate test-spelling test-markdown-lint
+#---------- Local runner ----------#
+.PHONY: test-pre-commit
+test-pre-commit: offensive-wording spellcheck-interactive lint-markdown
 	@echo
-	@echo "--- Tests passed.  See output above. ---"
+	@echo "--- Resolve any warnings or errors above before committing to version control. ---"
+
+#---------- CI runner ----------#
+.PHONY: test
+test: offensive-wording spellcheck-auto lint-markdown
+	@echo
+	@echo "--- All fatal tests passed.  See output above for warnings. ---"
