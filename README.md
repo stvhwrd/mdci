@@ -13,6 +13,19 @@
     - [remark-cli](https://www.npmjs.com/package/remark-cli) for linting.
 * [Travis CI](https://travis-ci.org)
 
+## Installation
+
+1. Clone the project:
+    `git clone https://github.com/stvhwrd/mdci.git`
+    
+2. Change directory:
+    `cd mdci`
+    
+3. Install NPM packages:
+    `npm install`
+    
+4. Run tests on `.md` files in the current directory, by running any of the [commands](#commands) below.
+
 ## Commands
 
 ### Sensitivity check:
