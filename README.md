@@ -13,11 +13,6 @@
     - [remark-cli](https://www.npmjs.com/package/remark-cli) for linting.
 * [Travis CI](https://travis-ci.org)
 
-Here's a one-liner to verify that you have the dependencies installed:
-```shell
-if type "npm" &> /dev/null && type "maker" &> /dev/null; then echo "\nGOOD TO GO!"; else echo "\nDependencies not installed."; fi
-```
-
 ## Installation
 
 1. Clone the project:
